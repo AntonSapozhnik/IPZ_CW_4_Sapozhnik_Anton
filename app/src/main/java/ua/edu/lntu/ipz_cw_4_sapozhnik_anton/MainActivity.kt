@@ -97,7 +97,14 @@ fun Screen2(taskText: String?, onDoneClick: () -> Unit) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-
+        if (!isTaskCompleted) {
+            Button(onClick = {
+                onDoneClick()
+                isTaskCompleted = true
+            }) {
+                Text(text = "Done")
+            }
+        }
     }
 }
 
