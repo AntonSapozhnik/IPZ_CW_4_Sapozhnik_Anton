@@ -122,6 +122,7 @@ fun Screen2(taskText: String?, onDoneClick: () -> Unit) {
 fun App() {
     var selectedItem by remember { mutableStateOf<String?>(null) }
     var currentScreen by remember { mutableIntStateOf(0) }
+
     val items = remember {
         listOf(
             "Завдання 1" to "Перевірити можливість створення нового Jetpack Compose проекту в Android Studio",
@@ -130,16 +131,30 @@ fun App() {
             "Завдання 4" to "Перевірити камеру для відеозвязку. Як варіант використовувати телефон"
         )
     }
-    when (currentScreen) {
-        0 -> Screen1(items = items) { clickedTaskId ->
-            selectedItem = items.find { it.first == clickedTaskId }?.second
-            currentScreen = 1
-        }
 
-        1 -> Screen2(taskText = selectedItem) {
-            selectedItem = null
-            currentScreen = 0
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Завдання") },
+                navigationIcon = {
+                    IconButton(onClick = { currentScreen = 0 }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                    }
+                }
+            )
+        }
+    ) {
+        when (currentScreen) {
+            0 -> Screen1(items = items) { clickedTaskId ->
+                selectedItem = items.find { it.first == clickedTaskId }?.second
+                currentScreen = 1
+            }
+
+            1 -> Screen2(taskText = selectedItem) {
+                selectedItem = null
+                currentScreen = 0
+            }
         }
     }
-    }
+}
 
