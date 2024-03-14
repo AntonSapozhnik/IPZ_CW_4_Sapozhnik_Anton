@@ -122,6 +122,13 @@ fun Screen2(taskText: String?, onDoneClick: () -> Unit) {
 fun App() {
     var selectedItem by remember { mutableStateOf<String?>(null) }
     var currentScreen by remember { mutableIntStateOf(0) }
-
+    val items = remember {
+        listOf(
+            "Завдання 1" to "Перевірити можливість створення нового Jetpack Compose проекту в Android Studio",
+            "Завдання 2" to "Перевірити роботу git(додати git до проекту, команди commit, push, можливість роботи з віддаленим репозиторієм)",
+            "Завдання 3" to "Перевірити Інтернет з`єднання",
+            "Завдання 4" to "Перевірити камеру для відеозвязку. Як варіант використовувати телефон"
+        )
+    }
     }
 
