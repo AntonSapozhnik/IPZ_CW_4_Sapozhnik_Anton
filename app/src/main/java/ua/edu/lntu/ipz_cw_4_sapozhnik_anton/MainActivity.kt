@@ -130,5 +130,16 @@ fun App() {
             "Завдання 4" to "Перевірити камеру для відеозвязку. Як варіант використовувати телефон"
         )
     }
+    when (currentScreen) {
+        0 -> Screen1(items = items) { clickedTaskId ->
+            selectedItem = items.find { it.first == clickedTaskId }?.second
+            currentScreen = 1
+        }
+
+        1 -> Screen2(taskText = selectedItem) {
+            selectedItem = null
+            currentScreen = 0
+        }
+    }
     }
 
