@@ -98,7 +98,7 @@ fun Screen2(taskText: String?, onDoneClick: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Екран 2")
+        Text("")
         Spacer(modifier = Modifier.height(16.dp))
         taskText?.let { // Перевіряємо, чи є текст завдання, перед тим як відображати
             Text(it)
